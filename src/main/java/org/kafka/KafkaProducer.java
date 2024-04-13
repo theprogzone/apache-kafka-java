@@ -1,16 +1,17 @@
 package org.kafka;
 
 import lombok.extern.slf4j.Slf4j;
-import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.common.serialization.StringSerializer;
 
 import java.util.Properties;
 
 @Slf4j
-public class Main {
+public class KafkaProducer {
 
     public static void main(String[] args) {
+
+        log.info("Kafka producer");
 
         Properties properties = new Properties();
 
@@ -22,7 +23,7 @@ public class Main {
         properties.setProperty("value.serializer", StringSerializer.class.getName());
 
         // Create producer
-        KafkaProducer<String, String> producer = new KafkaProducer<>(properties);
+        org.apache.kafka.clients.producer.KafkaProducer<String, String> producer = new org.apache.kafka.clients.producer.KafkaProducer<>(properties);
 
         // Create producer record
         ProducerRecord<String, String> producerRecord = new ProducerRecord<>("kafka_topic_1", "This is first message!");
